@@ -1,43 +1,44 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-type User {
+  scalar Date
+  type User {
     _id: ID
     username: String
     email: String
     password: String
-}
+  }
 
-type Message {
+  type Message {
     _id: ID
     messageText: String
     createdAt: Date
     username: String
-}
+  }
 
-type ChatRoom {
+  type ChatRoom {
     _id: ID
     roomName: String
     createdAt: Date
     members: [User]
     messages: [Message]
-}
+  }
 
-type Query {
+  type Query {
     users: [User]!
-    user:(userId: ID!): User
+    user(userId: ID!): User
     mainUser: User
     chatRooms: [ChatRoom]
-    chatRoom (roomId: ID!): ChatRoom
-}
+    chatRoom(roomId: ID!): ChatRoom
+  }
 
-type Mutation{
+  type Mutation {
     addUser(username: String!, email: String!, password: String!): User
     login(username: String!, password: String!): User
     createRoom(roomName: String!): ChatRoom
     addMessageToChat(roomId: ID!, messageText: String!): ChatRoom
-    addChatMember(roomId: ID!, userId: ID!)
-}
+    addChatMember(roomId: ID!, userId: ID!): ChatRoom
+  }
 `;
 
 module.exports = typeDefs;
