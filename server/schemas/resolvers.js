@@ -47,6 +47,26 @@ const resolvers = {
       const chatRoom = await ChatRoom.create({ roomName });
       return chatRoom;
     },
+    addMessageToChat: async (parent, { roomId, messageText }, context) => {
+      const user = await User.findById({ _id: context.user._id });
+      if (context.user) {
+        const message = await ChatRoom.findOneAndUpdate(
+          { _id: roomId },
+          { $addToSet: { messages: { messageText, username: user.username } } },
+          { runValidators: true, new: true }
+        );
+        return message;
+      }
+      throw new AuthenticationError("You need to be logged in");
+    },
+    addChatMember: async (parent, { roomId, userId }) => {
+      const chatRoom = await ChatRoom.findOneAndUpdate(
+        { _id: roomId },
+        { $addToSet: { members: { _id: userId } } },
+        { runValidators: true, new: true }
+      );
+      return chatRoom;
+    },
   },
 };
 
