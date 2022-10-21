@@ -36,7 +36,7 @@ type Mutation{
     login(username: String!, password: String!): User
     createRoom(roomName: String!): ChatRoom
     addMessageToChat(roomId: ID!, messageText: String!): ChatRoom
-    addRoomMember(roomId: ID!, userId: ID!)
+    addChatMember(roomId: ID!, userId: ID!)
 }
 `;
 
