@@ -15,10 +15,21 @@ type Message {
     username: String
 }
 
+type ChatRoom {
+    _id: ID
+    roomName: String
+    createdAt: Date
+    members: [User]
+    messages: [Message]
+}
+
 type Query {
     users: [User]!
     user:(userId: ID!): User
     mainUser: User
+    chatRooms: [ChatRoom]
+    chatRoom (roomId: ID!): ChatRoom
+    
 }
 `;
 

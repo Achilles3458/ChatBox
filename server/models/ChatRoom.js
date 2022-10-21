@@ -10,7 +10,7 @@ const chatRoomSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  participants: [
+  members: [
     {
       type: Schema.Types.ObjectId,
       ref: "user",
