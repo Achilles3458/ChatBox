@@ -29,7 +29,14 @@ type Query {
     mainUser: User
     chatRooms: [ChatRoom]
     chatRoom (roomId: ID!): ChatRoom
-    
+}
+
+type Mutation{
+    addUser(username: String!, email: String!, password: String!): User
+    login(username: String!, password: String!): User
+    createRoom(roomName: String!): ChatRoom
+    addMessageToChat(roomId: ID!, messageText: String!): ChatRoom
+    addRoomMember(roomId: ID!, userId: ID!)
 }
 `;
 
