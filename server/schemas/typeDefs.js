@@ -39,6 +39,11 @@ const typeDefs = gql`
     createRoom(roomName: String!): ChatRoom
     addMessageToChat(roomId: ID!, messageText: String!): ChatRoom
     addChatMember(roomId: ID!, userId: ID!): ChatRoom
+    joinChat(roomId: String): ChatRoom
+  }
+
+  type Subscription {
+    messageAdded(roomId: ID!): ChatRoom
   }
 `;
 
