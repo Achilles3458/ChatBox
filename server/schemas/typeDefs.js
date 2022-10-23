@@ -30,6 +30,7 @@ const typeDefs = gql`
     mainUser: User
     chatRooms: [ChatRoom]
     chatRoom(roomId: ID!): ChatRoom
+    chatRoomMessages(roomId: ID!): ChatRoom
   }
 
   type Mutation {
