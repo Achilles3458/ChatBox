@@ -26,7 +26,8 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
-      return user;
+      const token = signToken(user);
+      return { token, user };
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -40,8 +41,9 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Wrong password");
       }
-
-      return user;
+      console.log(user, "token?");
+      const token = signToken(user);
+      return { token, user };
     },
     createRoom: async (parent, { roomName }) => {
       const chatRoom = await ChatRoom.create({ roomName });
