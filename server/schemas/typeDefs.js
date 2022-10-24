@@ -24,6 +24,11 @@ const typeDefs = gql`
     messages: [Message]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]!
     user(userId: ID!): User
@@ -34,8 +39,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): User
-    login(username: String!, password: String!): User
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     createRoom(roomName: String!): ChatRoom
     addMessageToChat(roomId: ID!, messageText: String!): ChatRoom
     addChatMember(roomId: ID!, userId: ID!): ChatRoom
