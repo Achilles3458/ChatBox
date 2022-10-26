@@ -22,6 +22,16 @@ const resolvers = {
     chatRoom: async (parent, { roomId }) => {
       return ChatRoom.findOne({ _id: roomId });
     },
+    chatRoomMessages: async (parent, { roomId }) => {
+      let num = 50;
+      let chatRoom = await ChatRoom.findById(roomId, {
+        messages: { $slice: ["$messages", -1 * num] },
+      });
+      if (!chatRoom) {
+        return;
+      }
+      return chatRoom;
+    },
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
