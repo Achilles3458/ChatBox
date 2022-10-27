@@ -50,7 +50,7 @@ const Signup = () => {
       ) : (
         <Form
           onSubmit={handleFormSubmit}
-          className="bg-dark text-light p-3 rounded"
+          className="bg-main text-light p-3 rounded"
         >
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
@@ -82,7 +82,7 @@ const Signup = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button className="bg-dark" type="submit">
             Submit
           </Button>
         </Form>

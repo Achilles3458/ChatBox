@@ -1,0 +1,9 @@
+:root {
+  --main: #0033ff;
+  --title: #000dff;
+  --chatcard: #0f58ff;
+}
+
+.bg-main {
+  background-color: var(--main);
+}

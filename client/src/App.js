@@ -12,6 +12,8 @@ import Header from "./components/Navbar";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 
+import "./Theme.css";
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
