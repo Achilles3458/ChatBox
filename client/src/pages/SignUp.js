@@ -20,7 +20,7 @@ const Signup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(value);
     setFormState({
       ...formState,
       [name]: value,
@@ -77,7 +77,7 @@ const Signup = () => {
             <Form.Control
               type="password"
               placeholder="Password"
-              name="username"
+              name="password"
               value={formState.password}
               onChange={handleChange}
             />
