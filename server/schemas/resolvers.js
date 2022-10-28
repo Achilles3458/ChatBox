@@ -45,13 +45,13 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError(`No user found by ${username}`);
       }
-
+      console.log(User);
       const correctPw = await User.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Wrong password");
       }
-      console.log(user, "token?");
+      // console.log(user, "token?");
       const token = signToken(user);
       return { token, user };
     },
