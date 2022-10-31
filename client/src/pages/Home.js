@@ -1,12 +1,13 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 //import chatroom list component
+import ChatRoomList from "../components/ChatRoomList";
 
 import { GET_ALL_CHATROOMS } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(GET_ALL_CHATROOMS);
-  const chatrooms = data?.chatrooms || [];
+  const chatrooms = data?.chatRooms || [];
 
   return (
     <main>
@@ -15,10 +16,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <>
-              <h1>Home Page</h1>
-              <div>{chatrooms}</div>
-            </>
+            <ChatRoomList chatrooms={chatrooms} />
           )}
         </div>
       </div>
