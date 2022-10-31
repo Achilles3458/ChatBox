@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Navbar";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 import "./Theme.css";
 
@@ -43,6 +44,7 @@ function App() {
           <br />
           <div className="container">
             <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
             </Routes>
