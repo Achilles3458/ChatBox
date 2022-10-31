@@ -2,8 +2,8 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 const ChatRoomList = ({ chatrooms }) => {
   if (!chatrooms.length) {
@@ -18,7 +18,16 @@ const ChatRoomList = ({ chatrooms }) => {
             <Card.Body>
               <Card.Title className="text-light">{rooms.roomName}</Card.Title>
               <div className="d-grid">
-                <Link className="text-light btn bg-dark">Join Chat Room</Link>
+                {Auth.loggedIn() ? (
+                  <Link
+                    className="text-light btn bg-dark"
+                    to={`/chatrooms/${rooms._id}`}
+                  >
+                    Join Chat Room
+                  </Link>
+                ) : (
+                  <Card.Text>You Need to login for chat room access.</Card.Text>
+                )}
               </div>
             </Card.Body>
           </Card>
