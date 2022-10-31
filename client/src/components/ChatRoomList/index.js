@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
@@ -26,7 +27,9 @@ const ChatRoomList = ({ chatrooms }) => {
                     Join Chat Room
                   </Link>
                 ) : (
-                  <Card.Text>You Need to login for chat room access.</Card.Text>
+                  <Alert variant="danger">
+                    You Need to login for chat room access.
+                  </Alert>
                 )}
               </div>
             </Card.Body>
