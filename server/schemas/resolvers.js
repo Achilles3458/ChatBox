@@ -96,6 +96,26 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in");
     },
+    leaveChat: async (parent, { roomId }, context) => {
+      console.log("leaving ChatRoom");
+      console.log(roomId);
+      if (context.user) {
+        console.log(context.user);
+        const userId = context.user._id;
+        const hold = await ChatRoom.findById({ _id: roomId });
+        let members = hold.members;
+        const index = members.indexOf(userId);
+        if (index > -1) {
+          members.splice(index, 1);
+        }
+        const chatRoom = await ChatRoom.findOneAndUpdate(
+          { _id: roomId },
+          { members }
+        );
+        return chatRoom;
+      }
+      throw new AuthenticationError("You need to be logged in");
+    },
   },
 };
 
