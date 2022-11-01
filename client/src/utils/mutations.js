@@ -49,3 +49,21 @@ export const CREATE_CHATROOM = gql`
     }
   }
 `;
+
+export const JOIN_CHAT = gql`
+  mutation JoinChat($roomId: String) {
+    joinChat(roomId: $roomId) {
+      _id
+      roomName
+    }
+  }
+`;
+
+export const LEAVE_CHAT = gql`
+  mutation Mutation($roomId: String) {
+    leaveChat(roomId: $roomId) {
+      _id
+      roomName
+    }
+  }
+`;
