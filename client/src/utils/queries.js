@@ -20,6 +20,17 @@ export const QUERY_SINGLE_USER = gql`
   }
 `;
 
+export const GET_SINGLE_CHATROOM = gql`
+  query Room($roomId: ID!) {
+    chatRoom(roomId: $roomId) {
+      _id
+      roomName
+      members
+      messages
+    }
+  }
+`;
+
 export const GET_ALL_CHATROOMS = gql`
   query Rooms {
     chatRooms {
