@@ -79,6 +79,23 @@ const resolvers = {
       );
       return chatRoom;
     },
+    joinChat: async (parent, { roomId }, context) => {
+      console.log("joining ChatRoom");
+      if (context.user) {
+        console.log(roomId);
+        console.log("User id " + context.user._id);
+
+        const userId = context.user._id;
+        const chatRoomUpdate = await ChatRoom.findOneAndUpdate(
+          { _id: roomId },
+          { $addToSet: { members: { _id: userId } } },
+          { runValidators: true, new: true }
+        );
+        console.log(chatRoomUpdate);
+        return chatRoomUpdate;
+      }
+      throw new AuthenticationError("You need to be logged in");
+    },
   },
 };
 
