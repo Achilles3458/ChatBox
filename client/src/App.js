@@ -12,6 +12,7 @@ import Header from "./components/Navbar";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import ChatRoom from "./pages/ChatRoom";
 
 import "./Theme.css";
 
@@ -47,6 +48,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/chatrooms/:roomId" element={<ChatRoom />} />
             </Routes>
           </div>
         </div>

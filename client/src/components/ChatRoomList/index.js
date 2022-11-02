@@ -10,7 +10,9 @@ const ChatRoomList = ({ chatrooms }) => {
   if (!chatrooms.length) {
     return <h3>No ChatRooms</h3>;
   }
-
+  for (const roomId of chatrooms) {
+    console.log(roomId._id);
+  }
   return (
     <Row xs={1} md={3} className="g-4">
       {chatrooms.map((rooms) => (
