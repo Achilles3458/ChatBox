@@ -8,7 +8,7 @@ import { GET_ALL_CHATROOMS } from "../utils/queries";
 const Home = () => {
   const { loading, data } = useQuery(GET_ALL_CHATROOMS);
   const chatrooms = data?.chatRooms || [];
-  console.log(data);
+
   return (
     <main>
       <div className="flex-row justify-center">

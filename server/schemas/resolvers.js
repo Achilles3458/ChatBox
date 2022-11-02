@@ -61,6 +61,7 @@ const resolvers = {
     },
     addMessageToChat: async (parent, { roomId, messageText }, context) => {
       const user = await User.findById({ _id: context.user._id });
+      console.log(roomId);
       if (context.user) {
         const message = await ChatRoom.findOneAndUpdate(
           { _id: roomId },

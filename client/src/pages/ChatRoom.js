@@ -13,7 +13,34 @@ const ChatRoom = () => {
 
   const chatRoom = data?.chatRoom || {};
 
-  console.log(chatRoom);
+  function MessageEditor() {
+    const [post] = useMutation(POST_MESSAGE_TO_CHATROOM);
+    const [value, setValue] = useState("");
+    function handleChange(e) {
+      setValue(e.target.value);
+    }
+    console.log(roomId);
+    async function handleSubmit(e) {
+      e.preventDefault();
+      await send(value);
+      setValue("");
+    }
+    async function send(messageText) {
+      await post({ variables: { roomId, messageText } });
+    }
+    return (
+      <form id="form" action="" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          id="input"
+          autoComplete="off"
+        />
+        <button>send</button>
+      </form>
+    );
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -25,34 +52,5 @@ const ChatRoom = () => {
     </div>
   );
 };
-
-function MessageEditor(props) {
-  const [post] = useMutation(POST_MESSAGE_TO_CHATROOM);
-  const [value, setValue] = useState("");
-  const roomId = props.roomId;
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-  async function handleSubmit(e) {
-    e.preventDefault();
-    await send(value);
-    setValue("");
-  }
-  async function send(messageText) {
-    await post({ variables: { roomId, messageText } });
-  }
-  return (
-    <form id="form" action="" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={value}
-        onChange={handleChange}
-        id="input"
-        autoComplete="off"
-      />
-      <button>send</button>
-    </form>
-  );
-}
 
 export default ChatRoom;

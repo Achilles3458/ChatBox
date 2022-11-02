@@ -43,6 +43,7 @@ jspm_packages/
 package-lock.json
 plan.txt
 .vscode
+messaging logic.txt
 
 # TypeScript v1 declaration files
 typings/
