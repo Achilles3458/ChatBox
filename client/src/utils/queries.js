@@ -25,8 +25,6 @@ export const GET_SINGLE_CHATROOM = gql`
     chatRoom(roomId: $roomId) {
       _id
       roomName
-      members
-      messages
     }
   }
 `;
