@@ -91,7 +91,9 @@ const ChatRoom = () => {
   }
   return (
     <div>
-      <MessageList />
+      <ul>
+        <MessageList />
+      </ul>
       <MessageEditor />
     </div>
   );
