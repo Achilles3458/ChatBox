@@ -1,7 +1,8 @@
 :root {
   --main: #0033ff;
   --title: #000dff;
-  --chatcard: #0f58ff;
+  --chatcard: #0b43c5;
+  --user: #5ea4ff;
 }
 
 .bg-main {
@@ -10,4 +11,12 @@
 
 .bg-darkMain {
   background-color: var(--title);
+}
+
+.bg-chat {
+  background-color: var(--chatcard);
+}
+
+.bg-user {
+  background-color: var(--user);
 }

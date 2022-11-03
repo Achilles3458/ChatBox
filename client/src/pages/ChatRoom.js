@@ -8,14 +8,13 @@ import auth from "../utils/auth";
 
 const ChatRoom = () => {
   const { roomId } = useParams();
-  const { loading, data } = useQuery(GET_SINGLE_CHATROOM, {
+  const { loading } = useQuery(GET_SINGLE_CHATROOM, {
     variables: { roomId: roomId },
   });
-  const chatRoom = data?.chatRoom || {};
 
   function MessageList() {
     const currentUser = auth.getUser().data.username;
-    const { loading, data, startPolling } = useQuery(GET_CHATROOM_MESSAGES, {
+    const { loading, data } = useQuery(GET_CHATROOM_MESSAGES, {
       variables: { roomId },
     });
 
@@ -27,16 +26,24 @@ const ChatRoom = () => {
       return chatMessages?.map((message) => {
         if (message.username === currentUser) {
           return (
-            <li key={message._id}>
+            <li
+              className="list-group-item bg-chat d-flex flex-row-reverse mt-3 rounded"
+              key={message._id}
+            >
               <div>{message.messageText}</div>
             </li>
           );
         } else {
           return (
-            <li key={message._id}>
+            <li
+              className="list-group-item bg-chat mt-3 rounded"
+              key={message._id}
+            >
               <div>
-                <span>{message.username}</span>
-                <div>{message.messageText}</div>
+                <span className="rounded p-1 bg-user text-dark">
+                  {message.username}
+                </span>
+                <div className="mt-1">{message.messageText}</div>
               </div>
             </li>
           );
@@ -91,7 +98,7 @@ const ChatRoom = () => {
   }
   return (
     <div>
-      <ul>
+      <ul className="list-group mb-5 pb-5">
         <MessageList />
       </ul>
       <MessageEditor />
