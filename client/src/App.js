@@ -13,6 +13,7 @@ import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import ChatRoom from "./pages/ChatRoom";
+import Four0Four from "./pages/404/404";
 
 import "./Theme.css";
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/chatrooms/:roomId" element={<ChatRoom />} />
+              <Route path="/*" element={<Four0Four />} />
             </Routes>
           </div>
         </div>
