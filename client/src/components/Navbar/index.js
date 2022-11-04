@@ -15,10 +15,13 @@ const Header = () => {
     <Navbar className="bg-main">
       <Container>
         <Navbar.Brand>
-          <Link className="navbar-brand" to="/">
-            Navbar
+          <Link to="/">
+            <img className="rounded" src="https://via.placeholder.com/50" />
           </Link>
         </Navbar.Brand>
+        <div className="navbar-brand h1 bg-darkMain px-5 py-3 mb-0 rounded ">
+          <div className="px-5">ChatBox</div>
+        </div>
         {Auth.loggedIn() ? (
           <Nav>
             <Link
