@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_SINGLE_CHATROOM } from "../utils/queries";
 import { POST_MESSAGE_TO_CHATROOM } from "../utils/mutations";
 import { GET_CHATROOM_MESSAGES } from "../utils/queries";
 import auth from "../utils/auth";
+const socket = io.connect("http://localhost:3001");
 
 const ChatRoom = (props) => {
   const { roomId } = useParams();
@@ -14,9 +16,13 @@ const ChatRoom = (props) => {
 
   function MessageList() {
     const currentUser = auth.getUser().data.username;
-    const { loading, data } = useQuery(GET_CHATROOM_MESSAGES, {
+    const { loading, data, startPolling } = useQuery(GET_CHATROOM_MESSAGES, {
       variables: { roomId },
     });
+
+    useEffect(() => {
+      startPolling(300);
+    }, []);
 
     const chatMessages = data?.chatRoomMessages.messages || [];
 

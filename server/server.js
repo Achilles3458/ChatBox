@@ -8,11 +8,15 @@ const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
 });
+
+const { initIo } = require("./socket/index");
+const ioServer = initIo(app);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -31,7 +35,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   server.applyMiddleware({ app });
 
   db.once("open", () => {
-    app.listen(PORT, () => {
+    ioServer.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(
         `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
