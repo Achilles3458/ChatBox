@@ -6,7 +6,7 @@ import { POST_MESSAGE_TO_CHATROOM } from "../utils/mutations";
 import { GET_CHATROOM_MESSAGES } from "../utils/queries";
 import auth from "../utils/auth";
 
-const ChatRoom = () => {
+const ChatRoom = (props) => {
   const { roomId } = useParams();
   const { loading } = useQuery(GET_SINGLE_CHATROOM, {
     variables: { roomId: roomId },
@@ -30,7 +30,7 @@ const ChatRoom = () => {
               className="list-group-item bg-chat d-flex flex-row-reverse mt-3 rounded"
               key={message._id}
             >
-              <div>{message.messageText}</div>
+              <div className="text-light">{message.messageText}</div>
             </li>
           );
         } else {
@@ -43,7 +43,7 @@ const ChatRoom = () => {
                 <span className="rounded p-1 bg-user text-dark">
                   {message.username}
                 </span>
-                <div className="mt-1">{message.messageText}</div>
+                <div className="mt-1 text-light">{message.messageText}</div>
               </div>
             </li>
           );
@@ -53,9 +53,10 @@ const ChatRoom = () => {
   }
 
   //Message posting function
-  function MessageEditor() {
+  function MessageEditor(props) {
     const [post] = useMutation(POST_MESSAGE_TO_CHATROOM);
     const [value, setValue] = useState("");
+    const roomId = props.roomId;
     function handleChange(e) {
       setValue(e.target.value);
     }
@@ -101,7 +102,7 @@ const ChatRoom = () => {
       <ul className="list-group mb-5 pb-5">
         <MessageList />
       </ul>
-      <MessageEditor />
+      <MessageEditor roomId={roomId} />
     </div>
   );
 };
