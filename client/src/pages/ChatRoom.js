@@ -1,28 +1,40 @@
-import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_SINGLE_CHATROOM } from "../utils/queries";
 import { POST_MESSAGE_TO_CHATROOM } from "../utils/mutations";
 import { GET_CHATROOM_MESSAGES } from "../utils/queries";
 import auth from "../utils/auth";
-const socket = io.connect("http://localhost:3001");
 
 const ChatRoom = (props) => {
+  const scrollElement = useRef();
+  const bottomTarget = useRef();
   const { roomId } = useParams();
   const { loading } = useQuery(GET_SINGLE_CHATROOM, {
     variables: { roomId: roomId },
   });
 
   function MessageList() {
+    const [canScrollDown, setCanScrollDown] = useState(true);
     const currentUser = auth.getUser().data.username;
     const { loading, data, startPolling } = useQuery(GET_CHATROOM_MESSAGES, {
       variables: { roomId },
     });
 
+    const executeScroll = () => {
+      bottomTarget.current.scrollIntoView();
+      setCanScrollDown(false);
+    };
+
     useEffect(() => {
       startPolling(300);
-    }, []);
+      executeScroll();
+    });
+    useEffect(() => {
+      if (!canScrollDown) {
+        executeScroll();
+      }
+    });
 
     const chatMessages = data?.chatRoomMessages.messages || [];
 
@@ -105,9 +117,12 @@ const ChatRoom = (props) => {
   }
   return (
     <div>
-      <ul className="list-group mb-5 pb-5">
-        <MessageList />
-      </ul>
+      <div className="scrollable-div" ref={scrollElement}>
+        <ul className="list-group mb-5 pb-5">
+          <MessageList />
+        </ul>
+        <div ref={bottomTarget}></div>
+      </div>
       <MessageEditor roomId={roomId} />
     </div>
   );

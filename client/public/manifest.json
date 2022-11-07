@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Message",
+  "name": "ChatBox",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,12 +9,13 @@
     },
     {
       "src": "logo.gif",
-      "type": "image/png",
+      "type": "image/gif",
       "sizes": "50x50"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0059ff",
+  "background_color": "#000dff",
+  "orientation": "portrait"
 }

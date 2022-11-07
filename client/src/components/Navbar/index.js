@@ -16,7 +16,7 @@ const Header = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img className="rounded" src="logo.gif" />
+            <img className="rounded" src="logo.gif" alt="ChatBox Logo" />
           </Link>
         </Navbar.Brand>
         <div className="navbar-brand h1 bg-darkMain px-5 py-3 mb-0 rounded ">
