@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/messaging-app",
+  process.env.MONGODB_URI ||
+    "mongodb+srv://Lardex:Myatlas22@chatbox.6v9yjzx.mongodb.net/messaging-app?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
