@@ -20,7 +20,6 @@ const Signup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
     setFormState({
       ...formState,
       [name]: value,
@@ -29,7 +28,6 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addUser({

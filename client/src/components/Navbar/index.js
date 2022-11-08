@@ -16,10 +16,10 @@ const Header = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img className="rounded" src="logo.gif" alt="ChatBox Logo" />
+            <img className="rounded" src="logo.png" alt="ChatBox Logo" />
           </Link>
         </Navbar.Brand>
-        <div className="navbar-brand h1 bg-darkMain px-5 py-3 mb-0 rounded ">
+        <div className="navbar-brand h1 bg-darkMain rounded ">
           <div className="px-5">ChatBox</div>
         </div>
         {Auth.loggedIn() ? (

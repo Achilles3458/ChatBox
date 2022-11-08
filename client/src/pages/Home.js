@@ -1,6 +1,5 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-//import chatroom list component
 import ChatRoomList from "../components/ChatRoomList";
 
 import { GET_ALL_CHATROOMS } from "../utils/queries";

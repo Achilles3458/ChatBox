@@ -1,5 +1,5 @@
 {
-  "short_name": "Message",
+  "short_name": "ChatBox",
   "name": "ChatBox",
   "icons": [
     {
@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo.gif",
-      "type": "image/gif",
+      "src": "logo.png",
+      "type": "image/png",
       "sizes": "50x50"
     }
   ],
