@@ -23,7 +23,7 @@
 
   Once a user is on the home page they will be presented with 6 chatboxes which are the chatrooms. They will have a message in place of the join button to tell the user they need to login to access the chatbox. Once the user has read that alert they will find a login and signup button in the nav bar in the top right. They navigate to sign up where they are presented with a username, passwork, and email input box. After finalizing the sign up process the user will be relocated to the homepage with all the chatboxes. The alert will be replaced with a join bution and once in the chatbox the user will be able to send a message that anyone in the chat room will see.
   
-  Website: (ChatBox)[https://mighty-eyrie-69947.herokuapp.com]
+  Website: [ChatBox](https://mighty-eyrie-69947.herokuapp.com)
   
   ![image](https://user-images.githubusercontent.com/100447639/204652166-c163da2a-2f5a-422a-8d12-2ea9a3a38e07.png)
 
